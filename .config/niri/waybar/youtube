@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+### Youtube Music script for waybar ---------------------------------
+
+youtubemusic_status=`playerctl -p chromium status 2>/dev/null`
+md_cmd="playerctl -p chromium metadata"
+
+if [[ "$youtubemusic_status" = 'Playing' ]]; then
+    if [[ "`$md_cmd title`" == 'Advertisement' ]]; then
+        echo -e  " GoDamnn Ads!"
+    else
+        	echo -e " $($md_cmd artist) - $($md_cmd title)\nPlaying: $($md_cmd artist) - $($md_cmd title)\nplaying"
+    fi
+elif [[ "$youtubemusic_status" = "Paused" ]]; then
+    echo -e " $($md_cmd artist) - $($md_cmd title)\nPaused: $($md_cmd artist) - $($md_cmd title)\npaused"
+else
+    echo -e "󰎊 Youtube Music Offline!\nYoutube Offline.\noffline"
+fi

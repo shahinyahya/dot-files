@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+## Copyright (C) 2020-2025 Aditya Shakya <adi1090x@gmail.com>
+##
+## Set Wallpaper
+
+WALLPAPER='/home/harvey/Pictures/wallpapers/porsche-car.jpg'
+
+swaybg --output '*' --mode fill --image "$WALLPAPER"

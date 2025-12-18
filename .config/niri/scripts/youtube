@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+### Youtube Music Song Info Script ------------------------------------
+
+youtubemusic_status=`playerctl -p chromium status 2>/dev/null`
+md_cmd='playerctl -p chromium metadata'
+
+if [[ "$youtubemusic_status" = 'Playing' ]]; then
+    if [[ "`$md_cmd title`" == 'Advertisement' ]]; then
+        echo -e '  Ads Godammit!!'
+    else
+        echo -e "  $($md_cmd artist) - $($md_cmd title)"
+    fi
+elif [[ "$youtubemusic_status" = "Paused" ]]; then
+        echo -e "  $($md_cmd artist) - $($md_cmd title)"
+else
+    echo -e "󰎊 Youtube Music Offline"
+fi
